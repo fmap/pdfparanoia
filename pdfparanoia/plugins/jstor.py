@@ -32,7 +32,7 @@ class JSTOR(Plugin):
     requirements = [
         "All use subject to ",
         "JSTOR Terms and Conditions",
-        "This content downloaded  on",
+        "This content downloaded from",
     ]
 
     @classmethod
