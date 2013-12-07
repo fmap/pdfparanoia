@@ -28,7 +28,9 @@ class IEEEXplore(Plugin):
         # check each object in the pdf
         for objid in objids:
             # get an object by id
-            obj = pdf.getobj(objid)
+            try: 
+                obj = pdf.getobj(objid)
+            except: continue
 
             if hasattr(obj, "attrs"):
                 # watermarks tend to be in FlateDecode elements

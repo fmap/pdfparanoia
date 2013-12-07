@@ -33,7 +33,9 @@ class ScienceMagazine(Plugin):
         # check each object in the pdf
         for objid in objids:
             # get an object by id
-            obj = pdf.getobj(objid)
+            try: 
+                obj = pdf.getobj(objid)
+            except: continue
 
             if hasattr(obj, "attrs"):
                 if ("Width" in obj.attrs) and str(obj.attrs["Width"]) == "432":
