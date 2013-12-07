@@ -84,7 +84,7 @@ class JSTOR(Plugin):
                         #
                         # This would be better if it could be decoded to
                         # actually search for the "Accessed" text.
-                        if page_id == 0 and "/F2 11 Tf\n" in better_content:
+                        if page_id == 2 and "/F2 11 Tf\n" in better_content:
                             startpos = better_content.rfind("/F2 11 Tf\n")
                             endpos = better_content.find("Tf\n", startpos+5)
 
