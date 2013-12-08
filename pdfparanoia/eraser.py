@@ -14,7 +14,6 @@ def manipulate_pdf(content, objid, callback, *args):
     output lines.
     """
     outlines = []
-    content = content.replace("\r\n", "\n")
     lines = content.split("\n")
     last_line = None
     skip_mode = False
