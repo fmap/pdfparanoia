@@ -2,6 +2,8 @@
 
 import unittest
 import pdfparanoia
+from pdfparanoia.parser import parse_content
+from pdfminer.pdfparser import PDFSyntaxError
 
 class JSTORTestCase(unittest.TestCase):
     def test_jstor(self):
@@ -15,3 +17,7 @@ class JSTORTestCase(unittest.TestCase):
         # FlateDecode should be replaced with a decompressed section
         self.assertIn("\n19 0 obj\n<</Length 2788", output)
 
+        try: 
+            parse_content(output)
+        except PDFSyntaxError:
+            self.fail("The JSTOR scrubber corrupted content.")
