@@ -7,6 +7,8 @@ Tools to erase things from pdfs by direct manipulation of the pdf format.
 
 """
 
+import re
+
 def find_xref_section_offset(content):
     # Note: we're assuming there's only one XRef section, which serves our
     # purposes for now..  
@@ -42,6 +44,8 @@ def manipulate_pdf(content, objid, callback, *args):
                 skip_mode = False
         last_line = line
     output = "\n".join(outlines)
+    offset = find_xref_section_offset(output)
+    output = re.sub('\d+\n*%%EOF', str(offset) + '\n%%EOF', output)
     return output
 
 def remove_object_by_id(content, objid):
