@@ -7,6 +7,9 @@ Tools to erase things from pdfs by direct manipulation of the pdf format.
 
 """
 
+def find_xref_section_offset(content):
+    return 0
+
 def manipulate_pdf(content, objid, callback, *args):
     """
     Iterates through a pdf looking for the object with the objid id. When the
