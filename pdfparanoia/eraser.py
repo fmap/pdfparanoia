@@ -8,7 +8,11 @@ Tools to erase things from pdfs by direct manipulation of the pdf format.
 """
 
 def find_xref_section_offset(content):
-    return 0
+    # Note: we're assuming there's only one XRef section, which serves our
+    # purposes for now..  
+    pos = content.find('<</Type/XRef') 
+    pos = content.index('xref') if pos==-1 else pos-10
+    return pos
 
 def manipulate_pdf(content, objid, callback, *args):
     """

@@ -30,3 +30,8 @@ class EraserTestCase(unittest.TestCase):
         file_handler.close()
         output = find_xref_section_offset(content)
         self.assertEqual(2290213, output)
+        file_handler = open("tests/samples/jstor/231a515256115368c142f528cee7f727.pdf", "rb")
+        content = file_handler.read()
+        file_handler.close()
+        output = find_xref_section_offset(content)
+        self.assertEqual(191784, output)
