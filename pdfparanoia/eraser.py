@@ -13,7 +13,7 @@ def find_xref_section_offset(content):
     # Note: we're assuming there's only one XRef section, which serves our
     # purposes for now..  
     pos = content.find('<</Type/XRef') 
-    pos = content.index('xref') if pos==-1 else pos-10
+    pos = content.find('xref') if pos==-1 else pos-10
     return pos
 
 def manipulate_pdf(content, objid, callback, *args):
@@ -45,7 +45,8 @@ def manipulate_pdf(content, objid, callback, *args):
         last_line = line
     output = "\n".join(outlines)
     offset = find_xref_section_offset(output)
-    output = re.sub('\d+\n*%%EOF', str(offset) + '\n%%EOF', output)
+    if offset !=-1:
+        output = re.sub('\d+\n*%%EOF', str(offset) + '\n%%EOF', output)
     return output
 
 def remove_object_by_id(content, objid):
